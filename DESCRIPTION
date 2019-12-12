@@ -1,0 +1,15 @@
+Package: opensilexWSClient
+Title: R Package Client for openSilexTestAPI
+Version: 3.3.0
+Authors@R: person("Swagger Codegen community", email = "apiteam@swagger.io", role = c("aut", "cre"))
+Description: An instance of OpenSILEX WebService
+Depends: 
+        R (>= 3.3.3),
+        opensilexWSClientR (>= 1.0.0)
+Encoding: UTF-8
+License: Unlicense
+LazyData: true
+Suggests: testthat
+Imports: jsonlite, httr, R6
+RoxygenNote: 6.1.1
+Remotes: github::opensilex/opensilex-ws-client-r@v1.0.0
