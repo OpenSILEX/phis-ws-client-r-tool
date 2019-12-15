@@ -37,7 +37,7 @@ library(phisWSClientRTools)
 phisWSClientRTools::connectToPHISWS(apiID="ws_private",username="guest@opensilex.org",password="guest", url = "http://www.opensilex.org:/openSilexSandBoxAPI/rest/")
 # 2019-10-04 10:05:40 INFO::Query executed and data recovered - WS2
 annoService <- AnnotationsApi$new()
-# create Annotations
+# create Annotations
 newAnnotation <- AnnotationDTO$new()
 newAnnotation$creator <- "http://www.phenome-fppn.fr/mtp/id/agent/admin_opensilex"
 newAnnotation$targets <- list("http://www.phenome-fppn.fr/test/id/event/99fe49a7-37e0-4b98-978e-132288172d35")

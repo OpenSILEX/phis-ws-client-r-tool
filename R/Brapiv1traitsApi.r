@@ -74,7 +74,6 @@ Brapiv1traitsApi <- R6::R6Class(
             returnObject$fromJSONObject(row)
             returnedOjects = c(returnedOjects,returnObject)
           }
-          
           return(Response$new(json$metadata,returnedOjects, resp, TRUE))
         }
         if(method == "POST" || method == "PUT"){
@@ -131,7 +130,6 @@ Brapiv1traitsApi <- R6::R6Class(
             returnObject$fromJSONObject(row)
             returnedOjects = c(returnedOjects,returnObject)
           }
-          
           return(Response$new(json$metadata,returnedOjects, resp, TRUE))
         }
         if(method == "POST" || method == "PUT"){

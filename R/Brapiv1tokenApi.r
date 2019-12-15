@@ -54,7 +54,6 @@ Brapiv1tokenApi <- R6::R6Class(
           body <- paste('[',bodyListPaste,']')
         }else{
           body <- paste('[',`body`$toJSONString(),']')
-          print(body)
         }
       } else {
         body <- NULL
@@ -96,7 +95,6 @@ Brapiv1tokenApi <- R6::R6Class(
           body <- paste('[',bodyListPaste,']')
         }else{
           body <- paste('[',`body`$toJSONString(),']')
-          print(body)
         }
       } else {
         body <- NULL

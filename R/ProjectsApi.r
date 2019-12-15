@@ -88,7 +88,6 @@ ProjectsApi <- R6::R6Class(
             returnObject$fromJSONObject(row)
             returnedOjects = c(returnedOjects,returnObject)
           }
-          
           return(Response$new(json$metadata,returnedOjects, resp, TRUE))
         }
         if(method == "POST" || method == "PUT"){
@@ -185,7 +184,6 @@ ProjectsApi <- R6::R6Class(
             returnObject$fromJSONObject(row)
             returnedOjects = c(returnedOjects,returnObject)
           }
-          
           return(Response$new(json$metadata,returnedOjects, resp, TRUE))
         }
         if(method == "POST" || method == "PUT"){
@@ -221,7 +219,6 @@ ProjectsApi <- R6::R6Class(
           body <- paste('[',bodyListPaste,']')
         }else{
           body <- paste('[',`body`$toJSONString(),']')
-          print(body)
         }
       } else {
         body <- NULL
@@ -247,7 +244,6 @@ ProjectsApi <- R6::R6Class(
             returnObject$fromJSONObject(row)
             returnedOjects = c(returnedOjects,returnObject)
           }
-          
           return(Response$new(json$metadata,returnedOjects, resp, TRUE))
         }
         if(method == "POST" || method == "PUT"){
@@ -283,7 +279,6 @@ ProjectsApi <- R6::R6Class(
           body <- paste('[',bodyListPaste,']')
         }else{
           body <- paste('[',`body`$toJSONString(),']')
-          print(body)
         }
       } else {
         body <- NULL
@@ -309,7 +304,6 @@ ProjectsApi <- R6::R6Class(
             returnObject$fromJSONObject(row)
             returnedOjects = c(returnedOjects,returnObject)
           }
-          
           return(Response$new(json$metadata,returnedOjects, resp, TRUE))
         }
         if(method == "POST" || method == "PUT"){
