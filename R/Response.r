@@ -5,11 +5,15 @@
 Response  <- R6::R6Class(
   'Response',
   public = list(
-    content = NULL,
+    metadata = NULL,
+    data = NULL,
     response = NULL,
-    initialize = function(content, response){
-      self$content <- content
+    success = FALSE,
+    initialize = function(metadata, data, response, success){
+      self$metadata <- metadata
+      self$data <- data
       self$response <- response
+      self$success <- success
     }
   )
 )
