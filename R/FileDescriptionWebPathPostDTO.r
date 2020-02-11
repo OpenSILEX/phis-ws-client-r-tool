@@ -100,7 +100,7 @@ FileDescriptionWebPathPostDTO <- R6::R6Class(
         self$`provenanceUri` <- FileDescriptionWebPathPostDTOObject$`provenanceUri`
       }
       if (!is.null(FileDescriptionWebPathPostDTOObject$`metadata`)) {
-        metadataObject <- TODO_OBJECT_MAPPING$new()
+        metadataObject <- ObjectDTO$new()
         metadataObject$fromJSON(jsonlite::toJSON(FileDescriptionWebPathPostDTOObject$metadata, auto_unbox = TRUE, null = "null"))
         self$`metadata` <- metadataObject
       }
@@ -126,7 +126,7 @@ FileDescriptionWebPathPostDTO <- R6::R6Class(
         self$`provenanceUri` <- FileDescriptionWebPathPostDTOObject$`provenanceUri`
       }
       if (!is.null(FileDescriptionWebPathPostDTOObject$`metadata`)) {
-        metadataObject <- TODO_OBJECT_MAPPING$new()
+        metadataObject <- ObjectDTO$new()
         metadataObject$fromJSON(jsonlite::toJSON(FileDescriptionWebPathPostDTOObject$metadata, auto_unbox = TRUE, null = "null"))
         self$`metadata` <- metadataObject
       }
@@ -157,8 +157,8 @@ FileDescriptionWebPathPostDTO <- R6::R6Class(
       self$`webPath` <- FileDescriptionWebPathPostDTOObject$`webPath`
       self$`concernedItems` <- lapply(FileDescriptionWebPathPostDTOObject$`concernedItems`, function(x) ConcernedItemDTO$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`provenanceUri` <- FileDescriptionWebPathPostDTOObject$`provenanceUri`
-      TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
-      self$`metadata` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(FileDescriptionWebPathPostDTOObject$metadata, auto_unbox = TRUE))
+      ObjectDTOObject <- ObjectDTO$new()
+      self$`metadata` <- ObjectDTOObject$fromJSON(jsonlite::toJSON(FileDescriptionWebPathPostDTOObject$metadata, auto_unbox = TRUE))
     }
   )
 )

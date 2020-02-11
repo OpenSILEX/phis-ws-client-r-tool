@@ -231,7 +231,7 @@ StudyDTO <- R6::R6Class(
       }
       if (!is.null(StudyDTOObject$`seasons`)) {
         self$`seasons` <- lapply(StudyDTOObject$`seasons`, function(x) {
-          seasonsObject <- TODO_OBJECT_MAPPING$new()
+          seasonsObject <- ObjectDTO$new()
           seasonsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE, null = "null"))
           seasonsObject
         })
@@ -296,7 +296,7 @@ StudyDTO <- R6::R6Class(
       }
       if (!is.null(StudyDTOObject$`seasons`)) {
         self$`seasons` <- lapply(StudyDTOObject$`seasons`, function(x) {
-          seasonsObject <- TODO_OBJECT_MAPPING$new()
+          seasonsObject <- ObjectDTO$new()
           seasonsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE, null = "null"))
           seasonsObject
         })
@@ -384,7 +384,7 @@ StudyDTO <- R6::R6Class(
       self$`name` <- StudyDTOObject$`name`
       self$`programDbId` <- StudyDTOObject$`programDbId`
       self$`programName` <- StudyDTOObject$`programName`
-      self$`seasons` <- lapply(StudyDTOObject$`seasons`, function(x) TODO_OBJECT_MAPPING$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
+      self$`seasons` <- lapply(StudyDTOObject$`seasons`, function(x) ObjectDTO$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`startDate` <- StudyDTOObject$`startDate`
       self$`studyDbId` <- StudyDTOObject$`studyDbId`
       self$`studyName` <- StudyDTOObject$`studyName`

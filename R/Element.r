@@ -32,7 +32,9 @@ ObjectDTO  <- R6::R6Class(
   public = list(
     attribs = NULL, 
     initialize = function(attribs){
+      if (!missing(attribs)) {      
         self$attribs <- attribs
+      }
     },
     toJSON = function() {
       jsonlite::toJSON(self$attribs, auto_unbox = TRUE)

@@ -71,7 +71,7 @@ ProvenanceDTO <- R6::R6Class(
         self$`comment` <- ProvenanceDTOObject$`comment`
       }
       if (!is.null(ProvenanceDTOObject$`metadata`)) {
-        metadataObject <- TODO_OBJECT_MAPPING$new()
+        metadataObject <- ObjectDTO$new()
         metadataObject$fromJSON(jsonlite::toJSON(ProvenanceDTOObject$metadata, auto_unbox = TRUE, null = "null"))
         self$`metadata` <- metadataObject
       }
@@ -87,7 +87,7 @@ ProvenanceDTO <- R6::R6Class(
         self$`comment` <- ProvenanceDTOObject$`comment`
       }
       if (!is.null(ProvenanceDTOObject$`metadata`)) {
-        metadataObject <- TODO_OBJECT_MAPPING$new()
+        metadataObject <- ObjectDTO$new()
         metadataObject$fromJSON(jsonlite::toJSON(ProvenanceDTOObject$metadata, auto_unbox = TRUE, null = "null"))
         self$`metadata` <- metadataObject
       }
@@ -111,8 +111,8 @@ ProvenanceDTO <- R6::R6Class(
       self$`uri` <- ProvenanceDTOObject$`uri`
       self$`label` <- ProvenanceDTOObject$`label`
       self$`comment` <- ProvenanceDTOObject$`comment`
-      TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
-      self$`metadata` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(ProvenanceDTOObject$metadata, auto_unbox = TRUE))
+      ObjectDTOObject <- ObjectDTO$new()
+      self$`metadata` <- ObjectDTOObject$fromJSON(jsonlite::toJSON(ProvenanceDTOObject$metadata, auto_unbox = TRUE))
     }
   )
 )

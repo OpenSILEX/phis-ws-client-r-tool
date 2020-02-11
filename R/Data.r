@@ -95,7 +95,7 @@ Data <- R6::R6Class(
         self$`date` <- DataObject$`date`
       }
       if (!is.null(DataObject$`value`)) {
-        valueObject <- TODO_OBJECT_MAPPING$new()
+        valueObject <- ObjectDTO$new()
         valueObject$fromJSON(jsonlite::toJSON(DataObject$value, auto_unbox = TRUE, null = "null"))
         self$`value` <- valueObject
       }
@@ -117,7 +117,7 @@ Data <- R6::R6Class(
         self$`date` <- DataObject$`date`
       }
       if (!is.null(DataObject$`value`)) {
-        valueObject <- TODO_OBJECT_MAPPING$new()
+        valueObject <- ObjectDTO$new()
         valueObject$fromJSON(jsonlite::toJSON(DataObject$value, auto_unbox = TRUE, null = "null"))
         self$`value` <- valueObject
       }
@@ -147,8 +147,8 @@ Data <- R6::R6Class(
       self$`objectUri` <- DataObject$`objectUri`
       self$`variableUri` <- DataObject$`variableUri`
       self$`date` <- DataObject$`date`
-      TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
-      self$`value` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(DataObject$value, auto_unbox = TRUE))
+      ObjectDTOObject <- ObjectDTO$new()
+      self$`value` <- ObjectDTOObject$fromJSON(jsonlite::toJSON(DataObject$value, auto_unbox = TRUE))
     }
   )
 )
