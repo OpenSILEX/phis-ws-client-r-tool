@@ -22,3 +22,20 @@ Element  <- R6::R6Class(
     }
   )
 )
+
+#' Object Class
+#'
+#' Object Class
+#' @export
+ObjectDTO  <- R6::R6Class(
+  'ObjectDTO',
+  public = list(
+    attribs = NULL, 
+    initialize = function(attribs){
+        self$attribs <- attribs
+    },
+    toJSON = function() {
+      jsonlite::toJSON(self$attribs, auto_unbox = TRUE)
+    }
+  )
+)

@@ -80,6 +80,7 @@ put2 Put project(s)
   name,
   shortname,
   financial_funding,
+  financial_funding_lang,
   financial_reference,
   description,
   start_date,
