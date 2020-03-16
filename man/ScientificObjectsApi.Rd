@@ -68,6 +68,7 @@ put5 Put scientific object(s) in the given experiment
   experiment,
   alias,
   rdf_type,
+  with_properties,
   ...
 )}\if{html}{\out{</div>}}
 }

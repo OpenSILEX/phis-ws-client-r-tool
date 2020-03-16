@@ -10,6 +10,9 @@ phisWSClientRTools.Sensors
 
 \describe{
 
+get_sensor_data Get data mesured by a sensor
+
+
 get_sensor_details Get a sensor
 
 
@@ -55,6 +58,7 @@ put_measured_variables1 Update the measured variables of a sensor
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{SensorsApi$new()}}
+\item \href{#method-get_sensor_data}{\code{SensorsApi$get_sensor_data()}}
 \item \href{#method-get_sensor_details}{\code{SensorsApi$get_sensor_details()}}
 \item \href{#method-get_sensor_profile}{\code{SensorsApi$get_sensor_profile()}}
 \item \href{#method-get_sensors_by_search}{\code{SensorsApi$get_sensors_by_search()}}
@@ -70,6 +74,24 @@ put_measured_variables1 Update the measured variables of a sensor
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SensorsApi$new(apiClient)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-get_sensor_data"></a>}}
+\subsection{Method \code{get_sensor_data()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SensorsApi$get_sensor_data(
+  uri,
+  variable,
+  provenance,
+  start_date,
+  end_date,
+  object,
+  page_size,
+  page,
+  ...
+)}\if{html}{\out{</div>}}
 }
 
 }

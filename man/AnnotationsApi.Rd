@@ -77,6 +77,7 @@ post1 Post annotations
   target,
   description,
   motivated_by,
+  date_sort_asc,
   ...
 )}\if{html}{\out{</div>}}
 }
