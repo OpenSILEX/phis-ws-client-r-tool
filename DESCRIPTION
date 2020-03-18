@@ -5,11 +5,11 @@ Authors@R: person("Swagger Codegen community", email = "apiteam@swagger.io", rol
 Description: An instance of OpenSILEX WebService
 Depends: 
         R (>= 3.3.3),
-        opensilexWSClientR (>= 1.0.0)
+        opensilexWSClientR (>= 1.1.0)
 Encoding: UTF-8
 License: Unlicense
 LazyData: true
 Suggests: testthat
 Imports: jsonlite, httr, R6
 RoxygenNote: 7.0.2
-Remotes: github::opensilex/opensilex-ws-client-r@v1.0.0
+Remotes: github::opensilex/opensilex-ws-client-r@1.1.0
