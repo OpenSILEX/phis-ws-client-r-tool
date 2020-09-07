@@ -18,6 +18,9 @@
 #' @section Methods:
 #' \describe{
 #'
+#' get_experiment_data_search Get data corresponding to the search parameters given.
+#'
+#'
 #' get_experiment_detail Get an experiment
 #'
 #'
@@ -50,6 +53,98 @@ ExperimentsApi <- R6::R6Class(
       else {
         self$apiClient <- ApiClient$new()
       }
+    },
+    get_experiment_data_search = function(uri,page_size,page,variable_uri,start_date,end_date,object_uri,object_label,provenance_uri,provenance_label,date_sort_asc,...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+      self$apiClient$basePath =  sub("/$", "",get("BASE_PATH",opensilexWSClientR:::configWS))
+      if(self$apiClient$basePath == ""){
+        stop("Wrong you must first connect with connectToPHISWS")
+      }
+      
+      #if (!missing(`authorization`)) {
+      #  headerParams['Authorization'] <- authorization
+      #}
+
+      if (!missing(`page_size`)) {
+        queryParams['pageSize'] <- page_size
+      }
+
+      if (!missing(`page`)) {
+        queryParams['page'] <- page
+      }
+
+      if (!missing(`variable_uri`)) {
+        queryParams['variableUri'] <- variable_uri
+      }
+
+      if (!missing(`start_date`)) {
+        queryParams['startDate'] <- start_date
+      }
+
+      if (!missing(`end_date`)) {
+        queryParams['endDate'] <- end_date
+      }
+
+      if (!missing(`object_uri`)) {
+        queryParams['objectUri'] <- object_uri
+      }
+
+      if (!missing(`object_label`)) {
+        queryParams['objectLabel'] <- object_label
+      }
+
+      if (!missing(`provenance_uri`)) {
+        queryParams['provenanceUri'] <- provenance_uri
+      }
+
+      if (!missing(`provenance_label`)) {
+        queryParams['provenanceLabel'] <- provenance_label
+      }
+
+      if (!missing(`date_sort_asc`)) {
+        queryParams['dateSortAsc'] <- date_sort_asc
+      }
+
+      urlPath <- "/experiments/{uri}/data"
+      if (!missing(`uri`)) {
+        urlPath <- gsub(paste0("\\{", "uri", "\\}"), `uri`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      method = "GET"
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+       
+        if(method == "GET"){
+          json <- jsonlite::fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+          data <- json$result$data
+          returnedOjects = list()
+          for(i in 1:nrow(data)){
+            row <- data[i,]
+            returnObject <- Data$new()
+            returnObject$fromJSONObject(row)
+            returnedOjects = c(returnedOjects,returnObject)
+          }
+          return(Response$new(json$metadata,returnedOjects, resp, TRUE))
+        }
+        if(method == "POST" || method == "PUT"){
+          json <- jsonlite::fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+          return(Response$new(json$metadata, json$result$datafiles, resp, TRUE))
+        }
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        json <- jsonlite::fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        return(Response$new(json$metadata, json, resp, FALSE))
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        json <- jsonlite::fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        return(Response$new(json$metadata, json, resp, FALSE))
+      }
+
     },
     get_experiment_detail = function(experiment,page_size,page,...){
       args <- list(...)

@@ -11,6 +11,7 @@
 #'
 #' @field label 
 #' @field comment 
+#' @field experiments 
 #' @field metadata 
 #'
 #' @importFrom R6 R6Class
@@ -21,8 +22,9 @@ ProvenancePostDTO <- R6::R6Class(
   public = list(
     `label` = NULL,
     `comment` = NULL,
+    `experiments` = NULL,
     `metadata` = NULL,
-    initialize = function(`label`, `comment`, `metadata`){
+    initialize = function(`label`, `comment`, `experiments`, `metadata`){
       if (!missing(`label`)) {
         stopifnot(is.character(`label`), length(`label`) == 1)
         self$`label` <- `label`
@@ -30,6 +32,11 @@ ProvenancePostDTO <- R6::R6Class(
       if (!missing(`comment`)) {
         stopifnot(is.character(`comment`), length(`comment`) == 1)
         self$`comment` <- `comment`
+      }
+      if (!missing(`experiments`)) {
+        stopifnot(is.list(`experiments`), length(`experiments`) != 0)
+        lapply(`experiments`, function(x) stopifnot(is.character(x)))
+        self$`experiments` <- `experiments`
       }
       if (!missing(`metadata`)) {
         stopifnot(R6::is.R6(`metadata`))
@@ -43,6 +50,9 @@ ProvenancePostDTO <- R6::R6Class(
       }
       if (!is.null(self$`comment`)) {
         ProvenancePostDTOObject[['comment']] <- self$`comment`
+      }
+      if (!is.null(self$`experiments`)) {
+        ProvenancePostDTOObject[['experiments']] <- self$`experiments`
       }
       if (!is.null(self$`metadata`)) {
         ProvenancePostDTOObject[['metadata']] <- self$`metadata`$toJSON()
@@ -58,6 +68,9 @@ ProvenancePostDTO <- R6::R6Class(
       if (!is.null(ProvenancePostDTOObject$`comment`)) {
         self$`comment` <- ProvenancePostDTOObject$`comment`
       }
+      if (!is.null(ProvenancePostDTOObject$`experiments`)) {
+        self$`experiments` <- ProvenancePostDTOObject$`experiments`
+      }
       if (!is.null(ProvenancePostDTOObject$`metadata`)) {
         metadataObject <- TODO_OBJECT_MAPPING$new()
         metadataObject$fromJSON(jsonlite::toJSON(ProvenancePostDTOObject$metadata, auto_unbox = TRUE, null = "null"))
@@ -71,6 +84,9 @@ ProvenancePostDTO <- R6::R6Class(
       if (!is.null(ProvenancePostDTOObject$`comment`)) {
         self$`comment` <- ProvenancePostDTOObject$`comment`
       }
+      if (!is.null(ProvenancePostDTOObject$`experiments`)) {
+        self$`experiments` <- ProvenancePostDTOObject$`experiments`
+      }
       if (!is.null(ProvenancePostDTOObject$`metadata`)) {
         metadataObject <- TODO_OBJECT_MAPPING$new()
         metadataObject$fromJSON(jsonlite::toJSON(ProvenancePostDTOObject$metadata, auto_unbox = TRUE, null = "null"))
@@ -82,10 +98,12 @@ ProvenancePostDTO <- R6::R6Class(
         '{
            "label": %s,
            "comment": %s,
+           "experiments": [%s],
            "metadata": %s
         }',
         jsonlite::toJSON(self$`label`,auto_unbox=TRUE, null = "null"),
         jsonlite::toJSON(self$`comment`,auto_unbox=TRUE, null = "null"),
+        lapply(self$`experiments`, function(x) paste(paste0('"', x, '"'), sep=",")),
         self$`metadata`$toJSON()
       )
     },
@@ -93,6 +111,7 @@ ProvenancePostDTO <- R6::R6Class(
       ProvenancePostDTOObject <- jsonlite::fromJSON(ProvenancePostDTOJson)
       self$`label` <- ProvenancePostDTOObject$`label`
       self$`comment` <- ProvenancePostDTOObject$`comment`
+      self$`experiments` <- ProvenancePostDTOObject$`experiments`
       TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
       self$`metadata` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(ProvenancePostDTOObject$metadata, auto_unbox = TRUE))
     }
